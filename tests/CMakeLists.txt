@@ -39,6 +39,17 @@ cmrc_add_test(
     )
 
 cmrc_add_test(
+NAME simple_v2
+PASS_REGEX "^Hello, world!"
+RESOURCES
+    hello.txt
+    # Resources not used by the test, but just make sure we get no compilation
+    # errors with the more complex paths:
+    subdir_a/subdir_b/file_a.txt
+    subdir_a/subdir_b/file_b.txt
+)
+
+cmrc_add_test(
     NAME flower
     RESOURCES flower.jpg
     TEST_ARGV "${CMAKE_CURRENT_SOURCE_DIR}/flower.jpg"
